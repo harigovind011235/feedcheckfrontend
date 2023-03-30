@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Login=lazy(()=>import("./component/login"))
 const AddUser=lazy(()=>import("./admin/adduser"))
+const Feedcheck = lazy(()=>import("./component/feedcheckform"))
 
 const routes= createBrowserRouter([
     {
@@ -18,6 +19,14 @@ const routes= createBrowserRouter([
         element:(
             <Suspense>
              <AddUser/>
+            </Suspense>
+        )
+    },
+    {
+        path:"/feedcheck",
+        element:(
+            <Suspense>
+                <Feedcheck/>
             </Suspense>
         )
     }
