@@ -1,32 +1,37 @@
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRouter from "./privaterouter";
 
-const Login=lazy(()=>import("./component/login"))
-const AddUser=lazy(()=>import("./admin/adduser"))
-const Feedcheck = lazy(()=>import("./component/feedcheckform"))
+const Login = lazy(() => import("./component/login"))
+const AddUser = lazy(() => import("./admin/adduser"))
+const Feedcheck = lazy(() => import("./component/feedcheck"))
 
-const routes= createBrowserRouter([
+const routes = createBrowserRouter([
     {
-        path:"/",
-        element:(
+        path: "/",
+        element: (
             <Suspense>
-                <Login/>
+                <Login />
             </Suspense>
         )
     },
     {
-        path:"/adduser",
-        element:(
+        path: "/adduser",
+        element: (
             <Suspense>
-             <AddUser/>
+                <PrivateRouter>
+                    <AddUser />
+                </PrivateRouter>
             </Suspense>
         )
     },
     {
-        path:"/feedcheck",
-        element:(
+        path: "/feedcheck",
+        element: (
             <Suspense>
-                <Feedcheck/>
+                <PrivateRouter>
+                    <Feedcheck />
+                </PrivateRouter>
             </Suspense>
         )
     }
